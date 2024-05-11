@@ -21,15 +21,37 @@ def consultar_tablas():
     cursor.execute(query)
     for linea in cursor:
         print(linea)
-    cursor.close
-    connection.close
+    # cursor.close
+    # connection.close
 
+def definir_menu():
+    while True:
+        print("\n")
+        print("*"*50)
+        print(f"Bienvenido. Gracias por usar la app MENU A MEDIDA\n")
+        print("*"*50)
+        opcion_gen = ("F", "M")
+        genero = ""
+        while genero not in opcion_gen: 
+            genero = input("Ingrese F por femenino o M por masculino.\n\n").upper()
+        dias = ""
+        while not dias.isdecimal():
+            dias = input("Ingrese la cantidad de dias\n\n")
+        print(genero)
+        print(dias)
+        break
+        
 
 nombre_db = "frutas_y_verduras_FW"
 cursor = conectar_db(nombre_db)
-consultar_tablas()
-query = "SELECT * FROM 'frutas_y_verduras'"
-cursor.execute(query)
-for linea in cursor:
-    print(linea)
-    cursor.close
+definir_menu()
+
+
+
+
+# consultar_tablas()
+# query = "SELECT * FROM 'frutas_y_verduras'"
+# cursor.execute(query)
+# for linea in cursor:
+#     print(linea)
+cursor.close
