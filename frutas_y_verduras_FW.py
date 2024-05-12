@@ -10,6 +10,7 @@ EMAIL: F.WAIBSCHNAIDER@HOTMAIL.COM
 """
 
 import sqlite3
+import json
 
 def conectar_db(nombre):
     global connection
@@ -30,14 +31,21 @@ def definir_menu():
         print("*"*50)
         print(f"Bienvenido. Gracias por usar la app MENU A MEDIDA\n")
         print("*"*50)
-        opcion_gen = ("F", "M")
+        opcion_gen = ("f", "m")
         genero = ""
         while genero not in opcion_gen: 
-            genero = input("Ingrese F por femenino o M por masculino.\n\n").upper()
+            genero = input("Ingrese F por femenino o M por masculino.\n\n").lower()
         dias = ""
         while not dias.isdecimal():
             dias = input("Ingrese la cantidad de dias\n\n")
-        print(genero)
+
+        # Abro el archivo Json
+        with open('nutrientes.json', 'r') as archivo:
+            nutrientes_diarios = json.load(archivo)
+            menu_diario = {}
+            for nutri, cant in nutrientes_diarios.items():
+                menu_diario[nutri] = cant[genero]
+        print(menu_diario)
         print(dias)
         break
         
