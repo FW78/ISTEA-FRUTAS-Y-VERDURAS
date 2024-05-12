@@ -38,15 +38,22 @@ def definir_menu():
         dias = ""
         while not dias.isdecimal():
             dias = input("Ingrese la cantidad de dias\n\n")
+        dias = int(dias)
 
-        # Abro el archivo Json
+        # Abro el archivo Json y segun genero cargo la informacion de nutrientes diarios a menu_diario
         with open('nutrientes.json', 'r') as archivo:
             nutrientes_diarios = json.load(archivo)
             menu_diario = {}
             for nutri, cant in nutrientes_diarios.items():
                 menu_diario[nutri] = cant[genero]
+        
+        menu_dia_numero = {}
+        for dia in range(1, dias+1):
+            menu_dia_numero[dia] = menu_diario.copy()
+
         print(menu_diario)
         print(dias)
+        print(menu_dia_numero)
         break
         
 
