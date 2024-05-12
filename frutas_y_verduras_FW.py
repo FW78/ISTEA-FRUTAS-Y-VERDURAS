@@ -49,19 +49,15 @@ def definir_menu():
         
         menu_dia_numero = {}
         for dia in range(1, dias+1):
-            menu_dia_numero[dia] = menu_diario.copy()
-
-        print(menu_diario)
-        print(dias)
-        print(menu_dia_numero)
+            menu_dia_numero[dia] = menu_diario.copy() 
         break
-        
+    return menu_dia_numero
 
 nombre_db = "frutas_y_verduras_FW"
 cursor = conectar_db(nombre_db)
-definir_menu()
-
-
+menu = definir_menu()
+for dia, meta in menu.items():
+    print(f"Menú día {dia}: {meta}")
 
 
 # consultar_tablas()
