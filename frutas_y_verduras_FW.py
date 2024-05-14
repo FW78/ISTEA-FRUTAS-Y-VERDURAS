@@ -53,12 +53,20 @@ def definir_menu():
         break
     return menu_dia_numero
 
+# def armar_menu(metas):
+#     print(len(metas))
+#     for dia in range(1, len(metas)):
+#         menu[]
+#     # ingrediente, cantidad
+
+
+
 nombre_db = "frutas_y_verduras_FW"
 cursor = conectar_db(nombre_db)
 menu = definir_menu()
 for dia, meta in menu.items():
     print(f"Menú día {dia}: {meta}")
-
+# armar_menu(menu)
 
 # consultar_tablas()
 # query = "SELECT * FROM 'frutas_y_verduras'"
